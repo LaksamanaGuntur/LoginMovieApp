@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LoginMovieApp</string>
+    <string name="my_apps">My Apps</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_btn">Masuk</string>
+    <string name="field_required">Wajib diisi</string>
+</resources>
