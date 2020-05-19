@@ -1,4 +1,4 @@
-package co.id.loginmovieapp.ui.login;
+package co.id.loginmovieapp.ui.registration;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,26 +20,25 @@ import co.id.loginmovieapp.CoreApp;
 import co.id.loginmovieapp.R;
 import co.id.loginmovieapp.di.module.MainActivityModule;
 import co.id.loginmovieapp.ui.dashboard.DashboardActivity;
-import co.id.loginmovieapp.ui.registration.RegistrationActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View {
+public class RegistrationActivity extends AppCompatActivity implements RegistrationContract.View {
     private static final String TAG = "RegistrationActivity";
 
     @Inject
-    LoginPresenter mLoginPresenter;
+    RegistrationPresenter mRegistrationPresenter;
 
+    @BindView(R.id.name_et)
+    EditText mName;
     @BindView(R.id.email_et)
     EditText mEmail;
     @BindView(R.id.password_et)
     EditText mPassword;
-    @BindView(R.id.login_btn)
-    Button mLoginButton;
     @BindView(R.id.register_btn)
     Button mRegisterButton;
     @BindView(R.id.main_progress_bar)
     ProgressBar mProgressBar;
 
-    private LoginContract.UserActionListener mUserActionListener;
+    private RegistrationContract.UserActionListener mUserActionListener;
 
     @Override
     public void onStart() {
@@ -50,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideSystemUI();
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
 
         setupActivityComponent();
@@ -69,8 +68,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    @OnClick(R.id.login_btn)
-    public void userLoginAction(View view) {
+    @OnClick(R.id.register_btn)
+    public void userRegisterAction(View view) {
+        if (mName.getText().toString().length() == 0) {
+            mName.setError(getString(R.string.field_required));
+            return;
+        }
+
         if (mEmail.getText().toString().length() == 0) {
             mEmail.setError(getString(R.string.field_required));
             return;
@@ -81,51 +85,37 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             return;
         }
 
-        mUserActionListener.saveData(mEmail.getText().toString(), mPassword.getText().toString());
-    }
-
-    @OnClick(R.id.register_btn)
-    public void userRegisternAction(View view) {
-        startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+        mUserActionListener.saveData(mName.getText().toString(), mEmail.getText().toString(), mPassword.getText().toString());
     }
 
     @Override
     public void initializeData() {
-        mUserActionListener = mLoginPresenter;
-        mLoginPresenter.setView(this);
-
-        if (mUserActionListener.checkData()) {
-            moveToHomeScreen();
-        } else {
-            hideProgressBar();
-        }
+        mUserActionListener = mRegistrationPresenter;
+        mRegistrationPresenter.setView(this);
+        hideProgressBar();
     }
 
     @Override
     public void showProgressBar() {
         mProgressBar.setVisibility(View.VISIBLE);
+        mName.setEnabled(false);
         mEmail.setEnabled(false);
         mPassword.setEnabled(false);
-        mLoginButton.setEnabled(false);
+        mRegisterButton.setEnabled(false);
     }
 
     @Override
     public void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
+        mName.setEnabled(true);
         mEmail.setEnabled(true);
         mPassword.setEnabled(true);
-        mLoginButton.setEnabled(true);
+        mRegisterButton.setEnabled(true);
     }
 
     @Override
     public void moveToHomeScreen() {
-        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+//        startActivity(new Intent(RegistrationActivity.this, DashboardActivity.class));
         finish();
-    }
-
-    @Override
-    public void showError() {
-        mEmail.setError(getString(R.string.error_email_password));
-        mPassword.setError(getString(R.string.error_email_password));
     }
 }

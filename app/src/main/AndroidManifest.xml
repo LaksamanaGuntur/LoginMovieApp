@@ -23,6 +23,7 @@
         <activity android:name=".ui.dashboard.DashboardActivity"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <activity android:name=".ui.registration.RegistrationActivity" />
     </application>
 
 </manifest>

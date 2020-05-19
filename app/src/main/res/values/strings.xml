@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">LoginMovieApp</string>
     <string name="my_apps">My Apps</string>
+    <string name="register_name">Name</string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_btn">Masuk</string>
+    <string name="register_btn">Daftar</string>
+    <string name="register_text">Not a User? Register</string>
     <string name="field_required">Wajib diisi</string>
+    <string name="error_email_password">email/Password salah</string>
 </resources>

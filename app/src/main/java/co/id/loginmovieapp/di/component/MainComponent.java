@@ -5,6 +5,7 @@ import co.id.loginmovieapp.di.module.MainActivityModule;
 import co.id.loginmovieapp.ui.dashboard.DashboardActivity;
 import co.id.loginmovieapp.ui.dashboard.home.HomeFragment;
 import co.id.loginmovieapp.ui.login.LoginActivity;
+import co.id.loginmovieapp.ui.registration.RegistrationActivity;
 import dagger.Subcomponent;
 
 /**
@@ -19,5 +20,6 @@ import dagger.Subcomponent;
 public interface MainComponent {
     DashboardActivity inject(DashboardActivity dashboardActivity);
     LoginActivity inject(LoginActivity loginActivity);
+    RegistrationActivity inject(RegistrationActivity registrationActivity);
     HomeFragment inject(HomeFragment homeFragment);
 }

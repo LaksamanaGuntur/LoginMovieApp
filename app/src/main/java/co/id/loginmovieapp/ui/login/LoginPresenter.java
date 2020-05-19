@@ -21,10 +21,25 @@ public class LoginPresenter implements LoginContract.UserActionListener {
 
     @Override
     public void saveData(String email, String password) {
-        mDataModel.deleteDataListLogin();
-        mDataModel.insertDataLogin(new ResultDataLogin(email, password));
 
-        mView.moveToHomeScreen();
+        try {
+            if (mDataModel.getAllDataRegister().size() > 0) {
+                for (int i = 0; i < mDataModel.getAllDataRegister().size(); i++) {
+                    if (mDataModel.getAllDataRegister().get(i).getEmail().equals(email) &&
+                            mDataModel.getAllDataRegister().get(i).getPassword().equals(password)) {
+
+                        mView.moveToHomeScreen();
+                        return;
+                    }
+                }
+
+                mView.showError();
+            } else {
+                mView.showError();
+            }
+        } catch (Exception e) {
+            mView.showError();
+        }
     }
 
     @Override

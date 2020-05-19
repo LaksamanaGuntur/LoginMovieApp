@@ -6,6 +6,7 @@ public class LoginContract {
         void showProgressBar();
         void hideProgressBar();
         void moveToHomeScreen();
+        void showError();
     }
 
     public interface UserActionListener{

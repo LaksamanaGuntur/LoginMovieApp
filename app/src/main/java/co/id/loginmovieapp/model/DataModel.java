@@ -7,6 +7,8 @@ import co.id.loginmovieapp.data.ResultData;
 import co.id.loginmovieapp.data.ResultDataDao;
 import co.id.loginmovieapp.data.ResultDataLogin;
 import co.id.loginmovieapp.data.ResultDataLoginDao;
+import co.id.loginmovieapp.data.ResultDataRegister;
+import co.id.loginmovieapp.data.ResultDataRegisterDao;
 
 /**
  * Created by Laksamana Guntur Dzulfikar on 19/2/18.
@@ -16,11 +18,13 @@ import co.id.loginmovieapp.data.ResultDataLoginDao;
 public class DataModel extends BaseModel {
     private ResultDataDao mResultDataDao;
     private ResultDataLoginDao mResultDataLoginDao;
+    private ResultDataRegisterDao mResultDataRegisterDao;
 
     public DataModel(DaoSession daoSession) {
         super(daoSession);
         mResultDataDao = daoSession.getResultDataDao();
         mResultDataLoginDao = daoSession.getResultDataLoginDao();
+        mResultDataRegisterDao = daoSession.getResultDataRegisterDao();
     }
 
     public void insertData(ResultData resultData){
@@ -45,5 +49,17 @@ public class DataModel extends BaseModel {
 
     public void deleteDataListLogin() {
         mResultDataLoginDao.deleteAll();
+    }
+
+    public void insertDataRegister(ResultDataRegister resultDataRegister){
+        mResultDataRegisterDao.insertOrReplace(resultDataRegister);
+    }
+
+    public List<ResultDataRegister> getAllDataRegister(){
+        return mResultDataRegisterDao.loadAll();
+    }
+
+    public void deleteDataListRegister() {
+        mResultDataRegisterDao.deleteAll();
     }
 }
