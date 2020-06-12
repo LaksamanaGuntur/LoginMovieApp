@@ -14,6 +14,8 @@ import co.id.loginmovieapp.repository.MainRepository;
 import co.id.loginmovieapp.ui.dashboard.DashboardActivity;
 import co.id.loginmovieapp.ui.dashboard.home.HomeFragment;
 import co.id.loginmovieapp.ui.dashboard.home.HomePresenter;
+import co.id.loginmovieapp.ui.detail.DetailActivity;
+import co.id.loginmovieapp.ui.detail.DetailPresenter;
 import co.id.loginmovieapp.ui.login.LoginActivity;
 import co.id.loginmovieapp.ui.login.LoginPresenter;
 import co.id.loginmovieapp.ui.registration.RegistrationActivity;
@@ -31,6 +33,7 @@ public class MainActivityModule {
     private DashboardActivity dashboardActivity;
     private LoginActivity loginActivity;
     private RegistrationActivity registrationActivity;
+    private DetailActivity detailActivity;
     private HomeFragment homeFragment;
 
     public MainActivityModule(DashboardActivity dashboardActivity) {
@@ -43,6 +46,10 @@ public class MainActivityModule {
 
     public MainActivityModule(RegistrationActivity registrationActivity) {
         this.registrationActivity = registrationActivity;
+    }
+
+    public MainActivityModule(DetailActivity detailActivity) {
+        this.detailActivity = detailActivity;
     }
 
     public MainActivityModule(HomeFragment homeFragment) {
@@ -108,5 +115,11 @@ public class MainActivityModule {
     @ActivityScope
     RegistrationPresenter provideRegistrationPresenter(MainRepository mainRepository, DataModel dataModel) {
         return new RegistrationPresenter(mainRepository, dataModel);
+    }
+
+    @Provides
+    @ActivityScope
+    DetailPresenter provideDetailPresenter(DataModel dataModel) {
+        return new DetailPresenter(dataModel);
     }
 }

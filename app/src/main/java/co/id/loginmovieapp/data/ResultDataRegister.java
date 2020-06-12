@@ -27,7 +27,7 @@ public class ResultDataRegister implements Parcelable {
     @Expose
     private String email;
 
-    @SerializedName("password")
+    @SerializedName("ic_password")
     @Expose
     private String password;
 

@@ -1,5 +1,6 @@
 package co.id.loginmovieapp.ui.dashboard.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,8 @@ import co.id.loginmovieapp.R;
 import co.id.loginmovieapp.adapter.ListAdapter;
 import co.id.loginmovieapp.data.ResultData;
 import co.id.loginmovieapp.di.module.MainActivityModule;
+import co.id.loginmovieapp.helper.Constant;
+import co.id.loginmovieapp.ui.detail.DetailActivity;
 
 public class HomeFragment extends Fragment implements HomeContract.View {
     @Inject
@@ -88,5 +91,15 @@ public class HomeFragment extends Fragment implements HomeContract.View {
     @Override
     public void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void openDetail(ResultData resultData) {
+        Bundle b = new Bundle();
+        b.putParcelable(Constant.MOVIE_DETAIL, resultData);
+
+        Intent intent = new Intent(getContext(), DetailActivity.class);
+        intent.putExtra(Constant.MOVIE_DETAIL, b);
+        startActivity(intent);
     }
 }

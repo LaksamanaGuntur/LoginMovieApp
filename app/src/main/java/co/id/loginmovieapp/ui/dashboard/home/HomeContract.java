@@ -11,6 +11,7 @@ public class HomeContract {
         void initializeData();
         void showProgressBar();
         void hideProgressBar();
+        void openDetail(ResultData resultData);
     }
 
     public interface UserActionListener{

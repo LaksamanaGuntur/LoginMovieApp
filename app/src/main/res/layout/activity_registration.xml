@@ -12,7 +12,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/teabackground">
+            android:background="@drawable/img_tea">
 
         </FrameLayout>
 
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha=".4"
-            android:background="@drawable/background_fade">
+            android:background="@drawable/bg_fade">
 
         </FrameLayout>
 
@@ -43,7 +43,7 @@
                     style="@style/Font_family_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_style"
+                    android:background="@drawable/bg_edit_style"
                     android:drawableStart="@drawable/ic_account"
                     android:drawableTint="@color/white"
                     android:drawablePadding="@dimen/padding_16"
@@ -64,7 +64,7 @@
                     style="@style/Font_family_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_style"
+                    android:background="@drawable/bg_edit_style"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="@dimen/padding_16"
                     android:hint="@string/login_email"
@@ -85,9 +85,9 @@
                     style="@style/Font_family_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/password"
+                    android:drawableStart="@drawable/ic_password"
                     android:drawablePadding="@dimen/padding_16"
-                    android:background="@drawable/edit_style"
+                    android:background="@drawable/bg_edit_style"
                     android:hint="@string/login_password"
                     android:layout_marginTop="@dimen/margin_top_8"
                     android:layout_marginBottom="@dimen/margin_top_8"
@@ -109,7 +109,7 @@
                     android:layout_marginBottom="@dimen/margin_top_8"
                     android:layout_marginLeft="@dimen/margin_right_16"
                     android:layout_marginRight="@dimen/margin_right_16"
-                    android:background="@drawable/red_style"
+                    android:background="@drawable/bg_red_style"
                     android:text="@string/register_btn"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_20" />

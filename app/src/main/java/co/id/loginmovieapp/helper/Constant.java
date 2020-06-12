@@ -12,5 +12,7 @@ public class Constant {
     public static String API_KEY =  BuildConfig.API_KEY;
     public static String URL_IMAGE =  BuildConfig.URL_IMAGE;
     public static String DATABASE_NAME = "test_db2";
+
+    public static final String MOVIE_DETAIL = "movie_detail";
 }
 

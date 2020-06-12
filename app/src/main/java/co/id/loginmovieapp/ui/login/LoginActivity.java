@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @OnClick(R.id.register_btn)
-    public void userRegisternAction(View view) {
+    public void userRegisterAction(View view) {
         startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
     }
 

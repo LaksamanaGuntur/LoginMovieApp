@@ -8,26 +8,11 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorAccent"
+        android:background="@color/mapping_color_dary"
         android:theme="@style/AppTheme.AppBarOverlay"
-        android:gravity="center"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/AppTheme.PopupOverlay" >
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:paddingStart="5dp"
-            android:lines="1"
-            android:textSize="16sp"
-            android:text="@string/my_apps"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/white"
-            android:textStyle="normal" />
+        app:popupTheme="@style/AppTheme.PopupOverlay">
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -55,5 +40,6 @@
         app:itemIconSize="@dimen/text_24"
         app:itemIconTint="@drawable/state_bnve"
         app:itemTextColor="@drawable/state_bnve"
-        app:menu="@menu/bottomnavigation_menu" />
+        app:menu="@menu/bottom_navigation_menu" />
+
 </RelativeLayout>
