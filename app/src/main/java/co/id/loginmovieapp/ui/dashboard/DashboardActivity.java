@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -22,6 +26,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import co.id.loginmovieapp.CoreApp;
 import co.id.loginmovieapp.R;
 import co.id.loginmovieapp.adapter.ListAdapter;
@@ -34,7 +39,6 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
 
     @BindView(R.id.bn_main)
     BottomNavigationView mBottomNavigationView;
-
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 

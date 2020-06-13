@@ -35,10 +35,10 @@ public class HomePresenter implements HomeContract.UserActionListener {
     }
 
     @Override
-    public void getData() {
+    public void getData(String movieType) {
         mDataModel.deleteDataList();
         getView().showProgressBar();
-        mMainRepository.getData()
+        mMainRepository.getData(movieType)
                 .subscribe(new ResourceSubscriber<ApiResponse>() {
                     @Override
                     public void onNext(ApiResponse apiResponse) {

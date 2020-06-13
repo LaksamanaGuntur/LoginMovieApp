@@ -21,8 +21,8 @@ public class MainRepository extends BaseRepository {
      * Get Data
      * @Param Sorting Type
      * */
-    public Flowable<ApiResponse> getData() {
-        return networkService.getData(Constant.API_KEY)
+    public Flowable<ApiResponse> getData(String movieType) {
+        return networkService.getData(movieType, Constant.API_KEY)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread());
     }

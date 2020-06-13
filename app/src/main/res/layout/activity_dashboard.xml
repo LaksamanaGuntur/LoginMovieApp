@@ -20,18 +20,10 @@
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:layout_weight="1"/>
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fl_container"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_marginTop="?attr/actionBarSize"-->
-<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+        android:layout_marginTop="?attr/actionBarSize"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:visibility="gone"
         android:id="@+id/bn_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

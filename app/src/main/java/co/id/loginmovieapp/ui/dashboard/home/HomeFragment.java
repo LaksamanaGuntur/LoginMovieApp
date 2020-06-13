@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -19,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import co.id.loginmovieapp.CoreApp;
 import co.id.loginmovieapp.R;
@@ -36,6 +41,10 @@ public class HomeFragment extends Fragment implements HomeContract.View {
     RecyclerView mRecyclerView;
     @BindView(R.id.main_progress_bar)
     ProgressBar mProgressBar;
+    @BindView(R.id.category_btn)
+    Button mButton;
+    @BindView(R.id.category_view)
+    LinearLayout mCategoryView;
 
     private View mView;
     private Unbinder mUnbinder;
@@ -77,9 +86,10 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     @Override
     public void initializeData() {
+        mCategoryView.setVisibility(View.GONE);
         mUserActionListener = mHomePresenter;
         mHomePresenter.setView(this);
-        mUserActionListener.getData();
+        mUserActionListener.getData(Constant.POPULAR_MOVIE);
     }
 
     @Override
@@ -101,5 +111,53 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         Intent intent = new Intent(getContext(), DetailActivity.class);
         intent.putExtra(Constant.MOVIE_DETAIL, b);
         startActivity(intent);
+    }
+
+    @OnClick({R.id.category_btn, R.id.txt_popular, R.id.txt_upcoming, R.id.txt_top_rated, R.id.txt_now_playing})
+    public void chooseCategory(View view) {
+        switch (view.getId()) {
+            case R.id.category_btn:
+                slideUpDown();
+                break;
+            case R.id.txt_popular:
+                mUserActionListener.getData(Constant.POPULAR_MOVIE);
+                slideUpDown();
+                break;
+            case R.id.txt_upcoming:
+                mUserActionListener.getData(Constant.UPCOMING_MOVIE);
+                slideUpDown();
+                break;
+            case R.id.txt_top_rated:
+                mUserActionListener.getData(Constant.TOP_RATED__MOVIE);
+                slideUpDown();
+                break;
+            case R.id.txt_now_playing:
+                mUserActionListener.getData(Constant.NOW_PLAYING_MOVIE);
+                slideUpDown();
+                break;
+        }
+    }
+
+    public void slideUpDown() {
+        if (!isPanelShown()) {
+            // Show the panel
+            Animation bottomUp = AnimationUtils.loadAnimation(getContext(),
+                    R.anim.bottom_up);
+
+            mCategoryView.startAnimation(bottomUp);
+            mCategoryView.setVisibility(View.VISIBLE);
+        }
+        else {
+            // Hide the Panel
+            Animation bottomDown = AnimationUtils.loadAnimation(getContext(),
+                    R.anim.bottom_down);
+
+            mCategoryView.startAnimation(bottomDown);
+            mCategoryView.setVisibility(View.GONE);
+        }
+    }
+
+    private boolean isPanelShown() {
+        return mCategoryView.getVisibility() == View.VISIBLE;
     }
 }

@@ -2,6 +2,7 @@ package co.id.loginmovieapp.network;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -10,7 +11,9 @@ import retrofit2.http.Query;
  */
 
 public interface NetworkService {
-    @GET("movie/popular")
-    Flowable<ApiResponse> getData(@Query("api_key") String api_key);
-
+    @GET("movie/{movieType}")
+    Flowable<ApiResponse> getData(
+            @Path("movieType") String movieType,
+            @Query("api_key") String api_key
+    );
 }

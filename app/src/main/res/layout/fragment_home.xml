@@ -8,11 +8,28 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"/>
+
     <ProgressBar
         android:id="@+id/main_progress_bar"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/category_btn"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/mapping_color_dary"
+        android:text="Category"
+        android:layout_alignParentBottom="true">
+    </Button>
+
+    <include
+        layout="@layout/category_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="?attr/actionBarSize"/>
 </RelativeLayout>

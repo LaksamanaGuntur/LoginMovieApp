@@ -15,7 +15,7 @@ public class HomeContract {
     }
 
     public interface UserActionListener{
-        void getData();
+        void getData(String movieType);
         void saveData(ApiResponse apiResponse);
     }
 }

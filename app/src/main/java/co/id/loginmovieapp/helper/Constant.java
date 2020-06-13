@@ -14,5 +14,9 @@ public class Constant {
     public static String DATABASE_NAME = "test_db2";
 
     public static final String MOVIE_DETAIL = "movie_detail";
+    public static final String POPULAR_MOVIE = "popular";
+    public static final String UPCOMING_MOVIE = "upcoming";
+    public static final String TOP_RATED__MOVIE = "top_rated";
+    public static final String NOW_PLAYING_MOVIE = "now_playing";
 }
 
