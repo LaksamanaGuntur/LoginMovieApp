@@ -1,5 +1,6 @@
 package co.id.loginmovieapp.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,8 +33,11 @@ import co.id.loginmovieapp.R;
 import co.id.loginmovieapp.adapter.ListAdapter;
 import co.id.loginmovieapp.data.ResultData;
 import co.id.loginmovieapp.di.module.MainActivityModule;
+import co.id.loginmovieapp.helper.Constant;
 import co.id.loginmovieapp.ui.dashboard.account.AccountFragment;
 import co.id.loginmovieapp.ui.dashboard.home.HomeFragment;
+import co.id.loginmovieapp.ui.detail.DetailActivity;
+import co.id.loginmovieapp.ui.favorite.FavoriteActivity;
 
 public class DashboardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -104,6 +108,8 @@ public class DashboardActivity extends AppCompatActivity implements BottomNaviga
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
+                Intent intent = new Intent(this, FavoriteActivity.class);
+                startActivity(intent);
                 return true;
 
             default:

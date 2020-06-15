@@ -3,6 +3,8 @@ package co.id.loginmovieapp.model;
 import java.util.List;
 
 import co.id.loginmovieapp.data.DaoSession;
+import co.id.loginmovieapp.data.FavoriteData;
+import co.id.loginmovieapp.data.FavoriteDataDao;
 import co.id.loginmovieapp.data.ResultData;
 import co.id.loginmovieapp.data.ResultDataDao;
 import co.id.loginmovieapp.data.ResultDataLogin;
@@ -17,12 +19,14 @@ import co.id.loginmovieapp.data.ResultDataRegisterDao;
 
 public class DataModel extends BaseModel {
     private ResultDataDao mResultDataDao;
+    private FavoriteDataDao mFavoriteDao;
     private ResultDataLoginDao mResultDataLoginDao;
     private ResultDataRegisterDao mResultDataRegisterDao;
 
     public DataModel(DaoSession daoSession) {
         super(daoSession);
         mResultDataDao = daoSession.getResultDataDao();
+        mFavoriteDao = daoSession.getFavoriteDataDao();
         mResultDataLoginDao = daoSession.getResultDataLoginDao();
         mResultDataRegisterDao = daoSession.getResultDataRegisterDao();
     }
@@ -37,6 +41,19 @@ public class DataModel extends BaseModel {
 
     public void deleteDataList() {
         mResultDataDao.deleteAll();
+    }
+
+    public void insertFavoriteData(FavoriteData favoriteData){
+        mFavoriteDao.insertOrReplace(favoriteData);
+    }
+
+    public List<FavoriteData> getAllFavoriteData(){
+        return mFavoriteDao.loadAll();
+    }
+
+    public void deleteFavoriteData(FavoriteData favoriteData) {
+//        mFavoriteDao.delete(favoriteData);
+        mFavoriteDao.deleteByKey(favoriteData.getIdLocal());
     }
 
     public void insertDataLogin(ResultDataLogin resultDataLogin){

@@ -3,6 +3,8 @@ package co.id.loginmovieapp.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -15,39 +17,26 @@ import org.greenrobot.greendao.annotation.Id;
  */
 
 @Entity
-public class ResultData implements Parcelable {
+public class FavoriteData implements Parcelable {
 
-    @Id(autoincrement = true)
+    @Id
     private Long idLocal;
 
-    @SerializedName("vote_count")
     private int voteCount;
-    @SerializedName("id")
     private int id;
-    @SerializedName("video")
     private boolean video;
-    @SerializedName("vote_average")
     private float voteAverage;
-    @SerializedName("title")
     private String title;
-    @SerializedName("populatiry")
     private float popularity;
-    @SerializedName("poster_path")
     private String posterPath;
-    @SerializedName("original_language")
     private String originalLanguage;
-    @SerializedName("original_title")
     private String originalTitle;
-    @SerializedName("backdrop_path")
     private String backdropPath;
-    @SerializedName("adult")
     private boolean adult;
-    @SerializedName("overview")
     private String overview;
-    @SerializedName("release_date")
     private String releaseDate;
 
-    protected ResultData(Parcel in) {
+    protected FavoriteData(Parcel in) {
         if (in.readByte() == 0) {
             idLocal = null;
         } else {
@@ -68,11 +57,11 @@ public class ResultData implements Parcelable {
         releaseDate = in.readString();
     }
 
-    @Generated(hash = 1018961475)
-    public ResultData(Long idLocal, int voteCount, int id, boolean video,
-            float voteAverage, String title, float popularity, String posterPath,
-            String originalLanguage, String originalTitle, String backdropPath,
-            boolean adult, String overview, String releaseDate) {
+    @Generated(hash = 963678562)
+    public FavoriteData(Long idLocal, int voteCount, int id, boolean video, float voteAverage,
+            String title, float popularity, String posterPath, String originalLanguage,
+            String originalTitle, String backdropPath, boolean adult, String overview,
+            String releaseDate) {
         this.idLocal = idLocal;
         this.voteCount = voteCount;
         this.id = id;
@@ -89,8 +78,8 @@ public class ResultData implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
-    @Generated(hash = 1484394295)
-    public ResultData() {
+    @Generated(hash = 1088818046)
+    public FavoriteData() {
     }
 
     @Override
@@ -233,15 +222,15 @@ public class ResultData implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
-    public static final Creator<ResultData> CREATOR = new Creator<ResultData>() {
+    public static final Creator<FavoriteData> CREATOR = new Creator<FavoriteData>() {
         @Override
-        public ResultData createFromParcel(Parcel in) {
-            return new ResultData(in);
+        public FavoriteData createFromParcel(Parcel in) {
+            return new FavoriteData(in);
         }
 
         @Override
-        public ResultData[] newArray(int size) {
-            return new ResultData[size];
+        public FavoriteData[] newArray(int size) {
+            return new FavoriteData[size];
         }
     };
 }

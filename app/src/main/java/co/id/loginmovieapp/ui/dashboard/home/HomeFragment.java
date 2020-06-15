@@ -109,6 +109,7 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         b.putParcelable(Constant.MOVIE_DETAIL, resultData);
 
         Intent intent = new Intent(getContext(), DetailActivity.class);
+        intent.putExtra(Constant.PARAM, 1);
         intent.putExtra(Constant.MOVIE_DETAIL, b);
         startActivity(intent);
     }

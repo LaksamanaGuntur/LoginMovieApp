@@ -16,6 +16,8 @@ import co.id.loginmovieapp.ui.dashboard.home.HomeFragment;
 import co.id.loginmovieapp.ui.dashboard.home.HomePresenter;
 import co.id.loginmovieapp.ui.detail.DetailActivity;
 import co.id.loginmovieapp.ui.detail.DetailPresenter;
+import co.id.loginmovieapp.ui.favorite.FavoriteActivity;
+import co.id.loginmovieapp.ui.favorite.FavoritePresenter;
 import co.id.loginmovieapp.ui.login.LoginActivity;
 import co.id.loginmovieapp.ui.login.LoginPresenter;
 import co.id.loginmovieapp.ui.registration.RegistrationActivity;
@@ -34,6 +36,7 @@ public class MainActivityModule {
     private LoginActivity loginActivity;
     private RegistrationActivity registrationActivity;
     private DetailActivity detailActivity;
+    private FavoriteActivity favoriteActivity;
     private HomeFragment homeFragment;
 
     public MainActivityModule(DashboardActivity dashboardActivity) {
@@ -50,6 +53,10 @@ public class MainActivityModule {
 
     public MainActivityModule(DetailActivity detailActivity) {
         this.detailActivity = detailActivity;
+    }
+
+    public MainActivityModule(FavoriteActivity favoriteActivity) {
+        this.favoriteActivity = favoriteActivity;
     }
 
     public MainActivityModule(HomeFragment homeFragment) {
@@ -121,5 +128,11 @@ public class MainActivityModule {
     @ActivityScope
     DetailPresenter provideDetailPresenter(DataModel dataModel) {
         return new DetailPresenter(dataModel);
+    }
+
+    @Provides
+    @ActivityScope
+    FavoritePresenter provideFavoritePresenter(DataModel dataModel) {
+        return new FavoritePresenter(dataModel);
     }
 }
